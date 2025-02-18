@@ -35,5 +35,14 @@ ggplot(crickets, aes(x = rate)) +
   xlab('Chirp rate (per min.)') +
   ylab("Frequency")
 ```
+```{r temp, echo= FALSE}
+ggplot(crickets, aes(x = temp, y = rate)) +
+  geom_point() + 
+  geom_smooth(method = 'lm', color = "red") +
+  ggtitle("Plot of temperature and chirp rate") +
+  xlab('Temperature (Celsius)') +
+  ylab('Chirp rate (per min.)')
+```
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
