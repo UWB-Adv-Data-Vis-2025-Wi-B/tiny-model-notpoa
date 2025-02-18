@@ -54,6 +54,19 @@ ggplot(crickets, aes(x = temp, y = rate, color = species)) +
 species_lm <- lm(rate ~ temp + species, data = crickets)
 summary(species_lm)
 ```
+```{r interactions, echo= FALSE}
+ggplot(crickets, aes(x = temp, y = rate, color = species)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle("Temperature and Chirp Rate Interaction") +
+  xlab('Temperature (Celsius)') +
+  ylab('Chirp rate (per min.)')
+
+species_x_temp_lm <- lm(rate ~ temp * species, data = crickets)
+summary(species_x_temp_lm)
+
+anova(species_lm, species_x_temp_lm)
+```
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
