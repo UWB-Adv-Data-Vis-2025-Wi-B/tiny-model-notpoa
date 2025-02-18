@@ -430,6 +430,35 @@ chunk like this:</p>
 ##   Res.Df    RSS Df Sum of Sq     F Pr(&gt;F)
 ## 1     28 89.350                          
 ## 2     27 85.074  1    4.2758 1.357 0.2542</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = price ~ carat + cut + clarity, data = diamonds)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -16842.5   -636.4   -114.3    474.8  11238.6 
+## 
+## Coefficients:
+##              Estimate Std. Error  t value Pr(&gt;|t|)    
+## (Intercept) -3187.540     14.475 -220.208   &lt;2e-16 ***
+## carat        8472.026     12.615  671.584   &lt;2e-16 ***
+## cut.L         713.804     22.511   31.709   &lt;2e-16 ***
+## cut.Q        -334.503     19.828  -16.871   &lt;2e-16 ***
+## cut.C         188.482     17.218   10.947   &lt;2e-16 ***
+## cut^4           1.663     13.794    0.121   0.9040    
+## clarity.L    4011.681     33.931  118.231   &lt;2e-16 ***
+## clarity.Q   -1821.922     31.870  -57.167   &lt;2e-16 ***
+## clarity.C     917.658     27.313   33.598   &lt;2e-16 ***
+## clarity^4    -430.047     21.831  -19.699   &lt;2e-16 ***
+## clarity^5     257.141     17.821   14.429   &lt;2e-16 ***
+## clarity^6      26.909     15.539    1.732   0.0833 .  
+## clarity^7     186.742     13.685   13.646   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1281 on 53927 degrees of freedom
+## Multiple R-squared:  0.8969, Adjusted R-squared:  0.8969 
+## F-statistic: 3.911e+04 on 12 and 53927 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the
 code chunk to prevent printing of the R code that generated the
 plot.</p>

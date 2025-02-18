@@ -67,6 +67,11 @@ summary(species_x_temp_lm)
 
 anova(species_lm, species_x_temp_lm)
 ```
+```{r diamonds, echo= FALSE}
+data(diamonds, package = "ggplot2")
+diamonds_lm <- lm(price ~ carat + cut + clarity, data = diamonds)
+summary(diamonds_lm)
+```
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
