@@ -22,11 +22,16 @@ When you click the **Knit** button a document will be generated that includes bo
 data(crickets, package = "modeldata")
 names(crickets)
 ```
+## Introduction
 
+This R Markdown document demonstrates my ability to use models for data analysis using a dataset collected on crickets.
 ## Including Plots
 
 You can also embed plots, for example:
 
+## What is that sound?
+
+In this report, we examine what factors predict a cricket's chirp rate.
 ```{r summary, echo = FALSE}
 summary(crickets)
 ggplot(crickets, aes(x = rate)) +
@@ -35,6 +40,11 @@ ggplot(crickets, aes(x = rate)) +
   xlab('Chirp rate (per min.)') +
   ylab("Frequency")
 ```
+
+## Temperature affects chirp rate
+# Scatter Plot of Temperature vs. Chirp Rate
+# This scatter plot visualizes the relationship between temperature and chirp rate.
+# A linear regression line is added to highlight the trend.
 ```{r temp, echo= FALSE}
 ggplot(crickets, aes(x = temp, y = rate)) +
   geom_point() + 
@@ -43,6 +53,13 @@ ggplot(crickets, aes(x = temp, y = rate)) +
   xlab('Temperature (Celsius)') +
   ylab('Chirp rate (per min.)')
 ```
+
+# Linear Model for Chirp Rate Prediction
+# This model quantifies the relationship between temperature and chirp rate.
+temp_lm <- lm(rate ~ temp, data = crickets)
+
+# Display summary statistics of the linear model
+summary(temp_lm)
 ```{r species, echo= FALSE}
 ggplot(crickets, aes(x = temp, y = rate, color = species)) +
   geom_point() + 
@@ -54,6 +71,18 @@ ggplot(crickets, aes(x = temp, y = rate, color = species)) +
 species_lm <- lm(rate ~ temp + species, data = crickets)
 summary(species_lm)
 ```
+## Species-Specific Chirp Rate Distribution
+# Scatter Plot of Temperature vs. Chirp Rate by Species
+# This plot visualizes the chirp rate of different species of crickets at varying temperatures.
+# A regression line is added for each species.
+```{r species_histogram, echo = FALSE}
+ggplot(crickets, aes(x = rate, fill = species)) +
+  geom_histogram(position = 'identity', alpha = 0.7, bins = 8) + 
+  ggtitle("Distribution of the Chirp Rate by Species") +
+  xlab('Chirp rate (per min.)') +
+  ylab("Frequency")
+```
+
 ```{r interactions, echo= FALSE}
 ggplot(crickets, aes(x = temp, y = rate, color = species)) +
   geom_point() + 
@@ -67,6 +96,7 @@ summary(species_x_temp_lm)
 
 anova(species_lm, species_x_temp_lm)
 ```
+
 ```{r diamonds, echo= FALSE}
 data(diamonds, package = "ggplot2")
 diamonds_lm <- lm(price ~ carat + cut + clarity, data = diamonds)
@@ -75,3 +105,5 @@ summary(diamonds_lm)
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
